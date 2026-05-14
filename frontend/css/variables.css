@@ -1,0 +1,21 @@
+/* 1.2: GLOBAL DESIGN SYSTEM */
+:root {
+    /* Brand Colors - Màu sắc thương hiệu Nancy English Center */
+    --primary-color: #fc6214;    
+    --secondary-color: #053688;  
+    
+    --bg-main: #f4f7f9;          /* nền xám */
+    --white: #ffffff;            /* Trắng tinh khiết cho card/paper */
+    --text-main: #1a1a1a;        /* Màu chữ chính (gần đen) */
+    --text-muted: #64748b;       /* Màu chữ phụ (xám) */
+    --border-color: #e2e8f0;     /* Màu đường kẻ khung */
+
+    /* Layout Dimensions - Kích thước bố cục (Sẵn sàng cho Mobile) */
+    --sidebar-width: 260px;      /* Độ rộng menu bên trái trên Desktop */
+    --header-height: 70px;       /* Chiều cao thanh tiêu đề trên */
+    --border-radius: 12px;       /* Độ bo góc chuẩn hiện đại */
+    
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+}

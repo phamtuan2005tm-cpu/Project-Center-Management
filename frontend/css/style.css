@@ -1,0 +1,193 @@
+@import url('./variables.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#app-root {
+    background-color: rgba(203, 220, 239);
+}
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* 1. Đảm bảo toàn bộ ứng dụng cao bằng màn hình */
+#app-root, #login-page {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Cao 100% màn hình */
+    overflow: hidden; /* Không cho hiện thanh cuộn thừa */
+    justify-content: center;
+    align-items: center;
+}
+
+#login-page {
+    /* display: flex; */
+    width: 95%;
+    height: 95%;
+    /* justify-content: center;
+    align-items: center; */
+    /* border: 0px solid white; */
+    background-color: rgba(246, 250, 253) ;
+    border-radius: 30px;
+}
+
+/* 2. "Phép thuật" chia đôi màn hình nằm ở đây */
+.login-wrapper {
+    display: flex; /* Kích hoạt Flexbox để dàn hàng ngang */
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. Chia tỷ lệ 4 phần cho bên trái */
+.login-aside {
+    flex: 4; 
+    background-color: var(--secondary-color); 
+    display: flex;
+    /* border: 1px solid ; */
+    /* border-radius: 10%; */
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;   /* Xếp các con theo hàng dọc */
+    justify-content: center;  /* Căn giữa theo chiều dọc */
+    align-items: center;      /* Căn giữa theo chiều ngang */
+}
+
+.intro-aside {
+    flex: 6;
+    /* background: linear-gradient(rgba(5, 54, 136, 0.4), rgba(5, 54, 136, 0.4)),
+                url('../assets/images/avata.jpg');  */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    box-shadow: -15px 0 10px rgba(109, 141, 165); 
+    margin-left: 20px;
+    /* Đảm bảo khối này nằm trên khối xanh để thấy được bóng đổ */
+    z-index: 1;
+}
+.login-content .form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: -45px 60px 25px rgba(22, 16, 13, 0.1);
+    width: 90%;
+    height: 70%;
+    max-width: 450px; /* Độ rộng vừa phải, không bị quá dài */
+    display: flex;
+    flex-direction: column;
+}
+.login-content {
+    border: 2px solid var(--primary-color);
+    border-radius: 10%;
+    gap: 10px;
+}
+#enter-password, #enter-email, #enter-submit {
+    width: 100%;
+    border: 1px solid;
+}
+.form-login > div {
+    width: 100%;
+}
+.line {
+    width: 100%;
+    padding: 0.5px;
+    background-color: rgb(176, 172, 172);
+    margin: 15px 0px;
+}
+.form-login {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+.logo-gg {
+    width: 20%;
+}
+.login-with-google a{
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login > div > input {
+    width : 100%;
+    padding: 10px;
+    font-size: 15px;
+}
+.form-login > div > button {
+    width : 100%;
+    padding: 10px;
+    color: white;
+    font-weight: 400;
+    background-color: var(--secondary-color);
+}
+.lost-passwork {
+    font-size: 14px;
+}
+/* Khi màn hình nhỏ hơn 768px (điện thoại và máy tính bảng nhỏ) */
+@media (max-width: 768px) {
+    
+    /* 1. Ép hai khối Aside xếp chồng lên nhau thay vì nằm ngang */
+    .login-wrapper {
+        flex-direction: column; 
+        width: 100%; /* Mở rộng hộp ra gần sát mép màn hình điện thoại */
+        height: auto; /* Cho phép chiều cao tự co giãn theo nội dung */
+        min-height: 90vh;
+        margin: 10px 0;
+    }
+
+    /* 2. Phần ảnh (Intro) - Thu nhỏ lại hoặc đẩy lên trên làm hình nền trang trí */
+    .intro-aside {
+        order: 1; /* Đưa ảnh lên trên cùng */
+        flex: none;
+        height: 250px; /* Giới hạn chiều cao ảnh trên mobile */
+        width: 100%;
+        border-radius: 10%; /* Xóa bo góc elip để khớp với đỉnh hộp */
+        /* border-top-right-radius: 20%; */
+        clip-path: ellipse(100% 100% at 50% 0%); /* Tạo đường cong kiểu khác cho hợp mobile */
+    }
+
+    /* 3. Phần Đăng nhập - Chiếm không gian chính bên dưới */
+    .login-aside {
+        margin-top: 30px;
+        order: 2; /* Đưa form xuống dưới ảnh */
+        flex: none;
+        width: 95%;
+        padding: 40px 20px;
+        border: 0px solid;
+        border-radius: 5%;
+        
+        background-color: var(--secondary-color); /* Có thể đổi nền trắng cho dễ nhìn trên mobile */
+        box-shadow: -45px 60px 25px rgba(22, 16, 13, 0.1);
+    }
+
+    /* 4. Điều chỉnh lại chiếc hộp trắng chứa form */
+    .login-content {
+        width: 100%;
+        max-width: none; /* Cho phép form rộng ra hết cỡ aside trên mobile */
+        box-shadow: none; /* Bỏ bóng đổ của hộp con để tránh bị rối */
+        padding: 20px;
+    }
+}

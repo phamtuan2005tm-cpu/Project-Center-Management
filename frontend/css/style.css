@@ -68,8 +68,8 @@ body {
 
 .intro-aside {
     flex: 6;
-    /* background: linear-gradient(rgba(5, 54, 136, 0.4), rgba(5, 54, 136, 0.4)),
-                url('../assets/images/avata.jpg');  */
+    background: linear-gradient(rgba(5, 54, 136, 0.4), rgba(5, 54, 136, 0.4)),
+                url('../assets/images/avata.jpg'); 
     background-size: cover;
     background-position: center;
     display: flex;
@@ -81,6 +81,7 @@ body {
     margin-left: 20px;
     /* Đảm bảo khối này nằm trên khối xanh để thấy được bóng đổ */
     z-index: 1;
+    position: relative;
 }
 .login-content .form-login {
     display: flex;
@@ -124,7 +125,7 @@ body {
 .logo-gg {
     width: 20%;
 }
-.login-with-google a{
+.login-with-google > a{
     border: 1px solid gray;
     display: flex;
     align-items: center;
@@ -146,6 +147,33 @@ body {
 .lost-passwork {
     font-size: 14px;
 }
+.logo-nancy {
+    position: absolute;
+    top: 50px;              /* Cách mép trên cùng một khoảng cố định */
+    width: 5%;
+}
+.contact {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+}
+.contact address {
+    display: flex;
+    gap: 10px;
+}
+.contact address p {
+    color: white;
+    font-size:15px;
+}
+address a {
+    text-decoration: none;
+    color: white;
+}
+.link-a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
 /* Khi màn hình nhỏ hơn 768px (điện thoại và máy tính bảng nhỏ) */
 @media (max-width: 768px) {
     
@@ -157,7 +185,11 @@ body {
         min-height: 90vh;
         margin: 10px 0;
     }
-
+    .logo-nancy {
+    position: absolute;
+    top: 280px;              /* Cách mép trên cùng một khoảng cố định */
+    width: 10%;
+}
     /* 2. Phần ảnh (Intro) - Thu nhỏ lại hoặc đẩy lên trên làm hình nền trang trí */
     .intro-aside {
         order: 1; /* Đưa ảnh lên trên cùng */
@@ -171,16 +203,17 @@ body {
 
     /* 3. Phần Đăng nhập - Chiếm không gian chính bên dưới */
     .login-aside {
-        margin-top: 30px;
+        margin-top: 10px;
         order: 2; /* Đưa form xuống dưới ảnh */
         flex: none;
         width: 95%;
         padding: 40px 20px;
         border: 0px solid;
         border-radius: 5%;
-        
+        margin-left: 20px;
         background-color: var(--secondary-color); /* Có thể đổi nền trắng cho dễ nhìn trên mobile */
-        box-shadow: -45px 60px 25px rgba(22, 16, 13, 0.1);
+        /* box-shadow: -45px 60px 25px rgba(22, 16, 13, 0.1); */
+        
     }
 
     /* 4. Điều chỉnh lại chiếc hộp trắng chứa form */
@@ -189,5 +222,12 @@ body {
         max-width: none; /* Cho phép form rộng ra hết cỡ aside trên mobile */
         box-shadow: none; /* Bỏ bóng đổ của hộp con để tránh bị rối */
         padding: 20px;
+    }
+    .contact {
+        bottom: 20px;
+        left : 65px
+    }
+    .contact address p {
+    font-size:8px;
     }
 }

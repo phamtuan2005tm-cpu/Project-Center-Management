@@ -19,7 +19,7 @@
                 <aside class="login-aside">
                     <img class="logo-nancy" src="../frontend/assets/logos/Logo.jpg" alt="">
                     <div class="login-content">
-                        <form class="form-login" action="">
+                        <form class="form-login" id="login-form" action="">
                             <div>
                                 <input type="text" name="email" id="enter-email" placeholder="Your email...">
                             </div>
@@ -75,6 +75,36 @@
         </section>
 
     </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            // Ngăn chặn trình duyệt reload lại trang web khi bấm nút Submit
+            event.preventDefault();
+
+            // 1. Lấy dữ liệu thật từ các ô Input theo đúng ID của bạn
+            const emailInput = document.getElementById('enter-email').value;
+            const passwordInput = document.getElementById('enter-password').value;
+
+            console.log("Sending request to Java Server...");
+
+            // 2. Gửi tín hiệu (Fetch) tới tổng đài Java Backend đang mở ở cổng 8080
+            fetch('http://localhost:8080/api/login')
+                .then(response => response.text())
+                .then(data => {
+                    // Kiểm tra câu trả lời từ Java đổ ra
+                    if (data === 'SUCCESS') {
+                        alert('🎉 LOGIN SUCCESSFUL! Welcome to Nancy Management System.');
+                    } else {
+                        alert('❌ LOGIN FAILED! Wrong email or password.');
+                    }
+                })
+                .catch(error => {
+                    // Trường hợp quên chưa bật Server Java ngầm ở VS Code
+                    alert('❌ Cannot connect to Backend Server! Please make sure Java Server is running.');
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 </body>
 
 </html>

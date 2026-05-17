@@ -52,9 +52,14 @@ public class App {
 
             // Giả lập nhận dữ liệu Test từ tài khoản của bạn
             // (Mấy bài sau chúng ta sẽ sửa chỗ này để hứng dữ liệu thật người dùng gõ từ ô Input nhé)
-            String emailFromFrontend = "phamtuan2005tm@gmail.com"; 
-            String passwordFromFrontend = "@Thaituan6";
+            // String emailFromFrontend = "phamtuan2005tm@gmail.com"; 
+            // String passwordFromFrontend = "@Thaituan6";
 
+            String query = exchange.getRequestURI().getQuery(); 
+
+            // 2. Viết một hàm nhỏ để tách đoạn chuỗi đó ra thành dữ liệu thật
+            String emailFromFrontend = getParam(query, "email");       // Sẽ đọc được chữ người dùng gõ
+            String passwordFromFrontend = getParam(query, "password");   // Sẽ đọc được mật khẩu người dùng gõ
             // Gọi hàm login xuống Database để kiểm tra
             boolean isSuccess = login(emailFromFrontend, passwordFromFrontend);
 
@@ -96,5 +101,24 @@ public class App {
             System.err.println("Database error: " + e.getMessage());
             return false;
         }
+    }
+    /**
+     * HÀM BỔ TRỢ: Tách giá trị của tham số từ chuỗi Query dạng "email=abc&password=123"
+     */
+    private static String getParam(String query, String paramName) {
+        if (query == null || query.isEmpty()) {
+            return "";
+        }
+        // Tách chuỗi bằng dấu & để chia thành các cặp [email=abc] và [password=123]
+        String[] pairs = query.split("&");
+        for (String pair : pairs) {
+            // Tách từng cặp bằng dấu = để phân chia tên tham số và giá trị
+            String[] idx = pair.split("=");
+            if (idx.length > 1 && idx[0].equals(paramName)) {
+                // Trả về giá trị đã tìm thấy (ví dụ: abc)
+                return idx[1];
+            }
+        }
+        return "";
     }
 }

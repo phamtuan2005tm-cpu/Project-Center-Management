@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!-- admin-dashboard -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nancy English Center - Admin Dashboard</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+        <div class="dashboard-container">
+
+            <aside class="sidebar">
+                <div class="sidebar-above">
+                    <div class="sidebar-brand">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h2>NANCY CENTER</h2>
+                    </div>
+                    <nav class="sidebar-menu">
+                        <a href="#" class="menu-item"><i class="fa-solid fa-chart-pie"></i> Tổng Quan</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-chalkboard-user"></i> Quản lý Giáo viên</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-user-graduate"></i> Quản lý Học viên</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-school"></i> Quản Lí Lớp Học</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-wallet"></i> Học phí & Tài chính</a>
+                    </nav>
+                </div>
+
+                <div class="sidebar-below">
+                    <nav class="sidebar-menu">
+                        <a href="#" class="menu-item"><i class="fa-solid fa-gear"></i>Cài Đặt</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-user"></i>Quản Lí Người Dùng</a>
+                        <a href="#" class="menu-item"><i class="fa-solid fa-headphones"></i>Hỗ Trợ & Liên Hệ</a>
+                        <div class="sidebar-user">
+                            <div class="user-avatar-container">
+                                <img class="user-avatar" src="../frontend/assets/images/Đại Diện.jpg" alt="Avatar">
+                            </div>
+                            <div class="user-meta">
+                                <h4 id="sidebar-username">Thái Tuấn</h4>
+                                <p id="sidebar-email">admin@nancy.com</p>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="main-wrapper">
+
+                <header class="main-header">
+                    <div class="header-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Tìm kiếm nhanh bằng ID hoặc tên...">
+                    </div>
+                    <div class="welcome">
+                        <p>Chào Mừng Đến Với Trang Quản Lí Của Trung Tâm Nancy</p>
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div class="header-user">
+                        <span id="user-display"><i class="fa-solid fa-circle-user"></i> Đang tải thông tin...</span>
+                        <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i>
+                            Đăng xuất</button>
+                    </div>
+                </header>
+
+                <main class="main-content">
+
+                    <div class="welcome-section">
+                        <h1 id="welcome-title">Chào mừng quay trở lại!</h1>
+                        <p id="welcome-desc">Hệ thống đang cấu hình không gian làm việc...</p>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="card-metric">
+                            <div class="metric-icon students-color"><i class="fa-solid fa-users"></i></div>
+                            <div class="metric-info">
+                                <h3>Tổng Số Học Sinh</h3>
+                                <p class="metric-number">600</p>
+                            </div>
+                        </div>
+                        <div class="card-metric">
+                            <div class="metric-icon teachers-color"><i class="fa-solid fa-user-tie"></i></div>
+                            <div class="metric-info">
+                                <h3>Tổng Số Giáo Viên</h3>
+                                <p class="metric-number">23</p>
+                            </div>
+                        </div>
+                        <div class="card-metric">
+                            <div class="metric-icon classes-color"><i class="fa-solid fa-door-open"></i></div>
+                            <div class="metric-info">
+                                <h3>Lớp Hoạt Động</h3>
+                                <p class="metric-number">42</p>
+                            </div>
+                        </div>
+                        <div class="card-metric">
+                            <div class="metric-icon finance-color"><i class="fa-solid fa-money-bill-wave"></i></div>
+                            <div class="metric-info">
+                                <h3>Sự kiện & Dự Án</h3>
+                                <p class="metric-number">12</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-grid">
+
+                        <div class="data-card table-section">
+                            <div class="card-header">
+                                <h2><i class="fa-solid fa-list-check"></i> Danh Sách Học Viên</h2>
+                                <button class="btn-primary"><i class="fa-solid fa-plus"></i> Thêm Học Viên</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Mã ID</th>
+                                            <th>Tên Học Sinh</th>
+                                            <th>Phụ Huynh</th>
+                                            <th>Zalo liên hệ</th>
+                                            <th>Học phí</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#NC001</td>
+                                            <td><strong>Nguyễn Minh Khang</strong></td>
+                                            <td>Anh Tuấn</td>
+                                            <td>0912 xxx xxx</td>
+                                            <td><span class="status paid">Đã đóng</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#NC002</td>
+                                            <td><strong>Trần Lê Gia Bảo</strong></td>
+                                            <td>Chị Thảo</td>
+                                            <td>0988 xxx xxx</td>
+                                            <td><span class="status unpaid">Chưa đóng</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="data-card activity-section">
+                            <div class="card-header">
+                                <h2><i class="fa-solid fa-bell"></i> Lịch Ca Dạy Hôm Nay</h2>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="time-badge">17:30</div>
+                                    <div class="activity-detail">
+                                        <h4>Lớp 2 - Tiếng Anh Động Vật</h4>
+                                        <p>Giáo viên: Cô Lan | Dự án: The Zoo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </main>
+                <footer class="dashboard-footer">
+                    <div class="footer-left">
+                        <p>&copy; 2026 <strong>Nancy English Center</strong>. All rights reserved.</p>
+                    </div>
+                    <div class="footer-right">
+                        <p>Hệ thống Quản lý Nội bộ v1.0.0 <i class="fa-solid fa-code-branch"></i></p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- teacher-dashboard -->
+        <!-- student-dashboard -->
+        <!-- parent-dashboard -->
+        <script src="js/dashboard.js"></script>
+    </body>
+
+
+</html>

@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg-color: #f4f6f9;         /* Nền xám nhạt toàn trang */
+    --card-color: #ffffff;       /* Nền trắng tinh khôi cho các hộp Card */
+    --primary-color: #003366;    /* Xanh đậm thương hiệu Nancy */
+    --primary-hover: #002244;    /* Xanh đậm hơn khi rê chuột vào */
+    --text-main: #333333;        /* Chữ màu than tối dễ đọc */
+    --text-muted: #777777;       /* Chữ màu xám cho các phụ đề */
+    --border-color: #e2e8f0;     /* Kẻ chỉ xám siêu mỏng hiện đại */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Đổ bóng mịn */
+    
+    /* Màu sắc đại diện cho 4 thẻ chỉ số nhanh */
+    --color-student: #3b82f6;
+    --color-teacher: #10b981;
+    --color-class: #f59e0b;
+    --color-finance: #ef4444;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   CẤU TRÚC BỐ CỤC CHÍNH (LAYOUT CONTAINER)
+   ========================================================================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    margin-left: 260px; 
+}
+
+/* ==========================================================================
+   VÙNG 1: THANH SIDEBAR BÊN TRÁI (Cố định)
+   ========================================================================== */
+.sidebar {
+    width: 260px;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-brand {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-brand i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.sidebar-brand h2 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.user-avatar-container {
+    width: 40px;          
+    height: 40px;        
+    border-radius: 50%;   
+    overflow: hidden;     
+    border: 2px solid rgba(255, 255, 255, 0.2); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-avatar{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.sidebar-user {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.menu-item i {
+    font-size: 18px;
+    width: 24px;
+}
+
+/* Khi rê chuột vào Menu */
+.menu-item:hover {
+    color: #ffffff;
+    background-color: #3b82f6;
+}
+
+/* ==========================================================================
+   VÙNG 2: THANH HEADER PHÍA TRÊN
+   ========================================================================== */
+.main-header {
+    height: 70px;
+    background-color: var(--card-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--bg-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    width: 300px;
+    border: 1px solid black;
+}
+.welcome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-search i {
+    color: var(--text-muted);
+}
+.welcome i {
+    color: black;
+}
+
+.header-search input {
+    border: none;
+    background: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#user-display {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fee2e2;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #fee2e2;
+}
+
+/* ==========================================================================
+   VÙNG 3: RUỘT NỘI DUNG CHÍNH (MAIN CONTENT)
+   ========================================================================== */
+.main-content {
+    padding: 32px;
+    flex: 1;
+}
+
+.welcome-section {
+    margin-bottom: 32px;
+}
+
+.welcome-section h1 {
+    font-size: 26px;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+.welcome-section p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* 📊 LƯỚI 4 THẺ CHỈ SỐ NHANH (METRICS GRID) */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.card-metric {
+    background-color: var(--card-color);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.metric-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* Đổ màu nền riêng biệt cho từng loại Icon */
+.students-color { background-color: var(--color-student); }
+.teachers-color { background-color: var(--color-teacher); }
+.classes-color { background-color: var(--color-class); }
+.finance-color { background-color: var(--color-finance); }
+
+.metric-info h3 {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.metric-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* 📋 LƯỚI KHỐI DỮ LIỆU PHÍA DƯỚI (CHIA 2 CỘT 70% - 30%) */
+.data-grid {
+    display: grid;
+    grid-template-columns: 2.3fr 1fr; /* Chia tỉ lệ cột to cột nhỏ */
+    gap: 24px;
+}
+
+.data-card {
+    background-color: var(--card-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h2 {
+    font-size: 16px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* NÚT CHỨC NĂNG XANH DƯƠNG CHUẨN */
+.btn-primary {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+/* ==========================================================================
+   THIẾT KẾ BẢNG DỮ LIỆU HIỆN ĐẠI (DATA TABLE CSS)
+   ========================================================================== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+}
+
+tr:hover td {
+    background-color: #fcfdfe; /* Hiệu ứng đổi màu nhẹ khi di chuột vào dòng */
+}
+
+/* TRẠNG THÁI NHÃN HỌC PHÍ (BADGES) */
+.status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status.paid {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status.unpaid {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* ==========================================================================
+   KHỐI LỊCH CA DẠY BÊN PHẢI (ACTIVITY SECTION)
+   ========================================================================== */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 12px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.time-badge {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.activity-detail h4 {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.activity-detail p {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.dashboard-footer {
+    height: 50px;
+    background-color: var(--card-color); /* Nền trắng giống Header và các Card */
+    border-top: 1px solid var(--border-color); /* Đường kẻ chỉ xám siêu mỏng */
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Đẩy nội dung sang hai đầu rìa trang */
+    font-size: 13px;
+    color: var(--text-muted); /* Chữ màu xám nhạt tinh tế */
+    margin-top: auto; /* Thần chú kết hợp với flex-direction: column của main-wrapper để dính chặt ở đáy */
+}
+
+.dashboard-footer strong {
+    color: var(--primary-color); /* Tên trung tâm mang màu xanh Nancy nổi bật */
+}
+
+.dashboard-footer i {
+    color: var(--color-teacher); /* Icon nhánh code màu xanh lục nhẹ tạo điểm nhấn công nghệ */
+    margin-left: 4px;
+}

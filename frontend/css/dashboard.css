@@ -40,7 +40,8 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-color);
+    /* background-color: var(--bg-color); */
+    background-color: #ddeeff;
     margin-left: 260px; 
 }
 
@@ -60,6 +61,8 @@ body {
     justify-content: space-between;
     z-index: 100;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+    border: 3px solid black;
+    /* border-top-right-radius: 10px; */
 }
 
 .sidebar-brand {
@@ -136,12 +139,13 @@ body {
    ========================================================================== */
 .main-header {
     height: 70px;
-    background-color: var(--card-color);
+    background-color:var(--secondary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 32px;
-    border-bottom: 1px solid var(--border-color);
+    border: 1px solid black;
+    border-left: none;
 }
 
 .header-search {
@@ -162,8 +166,8 @@ body {
 .header-search i {
     color: var(--text-muted);
 }
-.welcome i {
-    color: black;
+.welcome p, i {
+    color: white;
 }
 
 .header-search input {
@@ -180,9 +184,10 @@ body {
     gap: 20px;
 }
 
+
 #user-display {
     font-weight: 600;
-    color: var(--primary-color);
+    color: white;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -190,7 +195,7 @@ body {
 
 .btn-logout {
     background-color: #fef2f2;
-    color: #ef4444;
+    color: black;
     border: 1px solid #fee2e2;
     padding: 8px 14px;
     border-radius: 6px;
@@ -200,6 +205,9 @@ body {
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
+}
+.btn-logout i {
+    color: black;
 }
 
 .btn-logout:hover {
@@ -423,22 +431,21 @@ tr:hover td {
 
 .dashboard-footer {
     height: 50px;
-    background-color: var(--card-color); /* Nền trắng giống Header và các Card */
-    border-top: 1px solid var(--border-color); /* Đường kẻ chỉ xám siêu mỏng */
+    background-color: var(--secondary-color); 
+    border-top: 1px solid black; 
     padding: 0 32px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Đẩy nội dung sang hai đầu rìa trang */
+    justify-content: space-between; 
     font-size: 13px;
-    color: var(--text-muted); /* Chữ màu xám nhạt tinh tế */
-    margin-top: auto; /* Thần chú kết hợp với flex-direction: column của main-wrapper để dính chặt ở đáy */
+    color: white; 
+    margin-top: auto; 
 }
-
 .dashboard-footer strong {
-    color: var(--primary-color); /* Tên trung tâm mang màu xanh Nancy nổi bật */
+    color: var(--primary-color); 
 }
 
 .dashboard-footer i {
-    color: var(--color-teacher); /* Icon nhánh code màu xanh lục nhẹ tạo điểm nhấn công nghệ */
+    color: var(--color-teacher); 
     margin-left: 4px;
 }

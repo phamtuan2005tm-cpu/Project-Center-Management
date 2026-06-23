@@ -79,7 +79,6 @@ body {
     border-bottom-left-radius: 50%;
     box-shadow: -15px 0 10px rgba(109, 141, 165); 
     margin-left: 20px;
-    /* Đảm bảo khối này nằm trên khối xanh để thấy được bóng đổ */
     z-index: 1;
     position: relative;
 }
@@ -95,9 +94,10 @@ body {
     box-shadow: -45px 60px 25px rgba(22, 16, 13, 0.1);
     width: 90%;
     height: 70%;
-    max-width: 450px; /* Độ rộng vừa phải, không bị quá dài */
+    max-width: 450px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .login-content {
     border: 2px solid var(--primary-color);
